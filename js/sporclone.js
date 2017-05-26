@@ -39,7 +39,7 @@ function setup()
     document.getElementById('score').innerHTML = correct + "/" + total;
 
     // o.
-    document.getElementById('time').innerHTML = time_remaining;
+    document.getElementById('time').innerHTML = formatTime(time_remaining);
 }
 
 
@@ -55,17 +55,16 @@ function start()
         document.getElementById('start').onclick = function() { end() };
 
         // p.
-  
-        seconds = 5;
+
         timer = setInterval(tick, 1000);
 
 
         // q.
-
+        document.getElementById('time').style.color = "#009900"
 
         // r.
 
-
+        document.getElementById("guess").focus();
     }
 }
 
@@ -76,18 +75,24 @@ function start()
 function tick()
 {
     // s.
-    document.getElementById('time').innerHTML = time_remaining;
+    document.getElementById('time').innerHTML = formatTime(time_remaining);
 
     // t.
     if (time_remaining < 1)
     {
         end();
     }
+    else if (time_remaining < 11) {
+
+    document.getElementById('time').style.color = "#f4d442"
+
+    }
 
     // u.
-    if (seconds > 0) {
-        seconds = seconds - 1;
+    if (time_remaining > 0) {
+        time_remaining = time_remaining - 1;
     }
+
 
 }
 
@@ -122,10 +127,10 @@ function check()
                         is_guessed[i] = true;
 
                         // v.
-
+                        correct++
 
                         // w.
-
+                        document.getElementById('score').innerHTML = correct + "/" + total;
 
                     }
                 }
@@ -148,7 +153,7 @@ function end()
     clearInterval(timer);
 
     // x.
-
+    document.getElementById('time').style.color = "#990000";
 
     for (var i=0; i<is_guessed.length; i++)
     {
@@ -162,11 +167,12 @@ function end()
         // y.
         if (is_guessed[i]==true)
         {
-
+          document.getElementById('answer' + i).style.backgroundColor = "#a3f7a8";
         }
+
         else
         {
-
+          document.getElementById('answer' + i).style.backgroundColor = "#ffb48e";
         }
 
     }
@@ -208,7 +214,7 @@ function isAlphanumericMatch(str1, str2)
     str2 = str2.replace(/[^a-zA-Z0-9]+/g, '');
 
     // z.
-    if (str1 == str2)
+    if (str1.toLowerCase() == str2.toLowerCase())
     {
         return true;
     }
