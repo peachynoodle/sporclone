@@ -34,7 +34,7 @@ th {
 }
 
 td {
-
+ text-align: center;
 }
 
 table span {
@@ -53,7 +53,7 @@ table span {
 var answers = ["Snow White", "Cinderella", "Aurora | Sleeping Beauty", "Ariel", "Belle",  "Jasmine", "Pocahontas", "Mulan", "Tiana", "Rapunzel", "Merida", "Anna", "Elsa", "Moana"];
 
 // d.
-var time_limit = 5; // in seconds
+var time_limit = 150; // in seconds
 
 </script>
 
@@ -97,10 +97,10 @@ var time_limit = 5; // in seconds
 
         <div class="column">
             <!-- j. -->
-            <h3>Enter princess name:</h3>
+            <h3>Enter a princess:</h3>
 
             <!-- k.  -->
-            <input id="guess" type="text">
+            <input id="guess" onkeyup="check()" type="text">
         </div>
 
         <div class="column">
